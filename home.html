@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600&display=swap');
+* {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    transition: all .2s linear;
+}
+:root {
+    --blue: #6a4c9c;
+    --light-blue: #f0fdfa;
+    --light-color: #777;
+    --light-white: #eee;
+    --black: #444;
+    --white: #fff;
+    --border: 0.1rem solid var(--blue);
+    --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+html::-webkit-scrollbar {
+    width: 1rem;
+}
+html::-webkit-scrollbar-track {
+    background: transparent;
+}
+html::-webkit-scrollbar-thumb {
+    background: var(--blue);
+}
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    box-shadow: var(--box-shadow);
+    padding: 1rem 10%;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+}
+.header .logo {
+    margin-right: auto;
+    font-size: 2.5rem;
+    text-transform: capitalize;
+    color: var(--black);
+    font-weight: bolder;
+}
+.header .logo i {
+    color: var(--blue);
+}
+.navbar a {
+    margin-right: 5rem;
+    font-size: 2rem;
+    text-transform: capitalize;
+    color: var(--black);
+    transition: color 0.2s linear;
+}
+.navbar a:hover {
+    color: var(--blue);
+}
+.icons div {
+    cursor: pointer;
+    font-size: 2.5rem;
+    color: var(--black);
+    margin-left: 3rem;
+}
+.icons div:hover {
+    color: var(--blue);
+}
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.search-form input {
+    padding: 0.8rem 1.2rem;
+    border: 2px solid #ccc;
+    border-radius: 2rem;
+    outline: none;
+    font-size: 1.6rem;
+    width: 20rem;
+    transition: border-color 0.3s ease;
+}
+.search-form input:focus {
+    border-color: #6a4c9c;
+    box-shadow: 0 0 5px rgba(106, 76, 156, 0.5);
+}
+.search-form button {
+    background: #6a4c9c;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+.search-form button:hover {
+    background: #50388d;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+.navbars {
+    display: flex;
+    justify-content: center;
+    background-color: #6a4c9c;
+    border-radius: 5px;
+    margin-left: 20px;
+    gap: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+.navbars a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.4rem;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.navbars a:hover {
+    background-color: #50388d;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+        
+        /* Projects Section Styling */
+#projects {
+    padding: 5rem 10%;
+    background-color: var(--light-blue);
+}
+#projects .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+#projects .section-title {
+    font-size: 3rem;
+    color: var(--blue);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+#projects .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+.project-card {
+    background-color: var(--white);
+    box-shadow: var(--box-shadow);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.select-project-btn {
+    background-color: #6a0dad; /* იისფერი */
+    color: white; /* თეთრი ტექსტი */
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.6rem;
+    border-radius: 8px; /* მომრგვალებული კუთხეები */
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.select-project-btn:hover {
+    background-color: #5a0c9e; /* უფრო მუქი იისფერი ჰოვერზე */
+    transform: scale(1.05); /* ოდნავი გადიდება */
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+.project-card .title-text {
+    font-size: 2rem;
+    color: var(--blue);
+    margin: 1rem 0;
+}
+.project-card .graph-text {
+    font-size: 1.6rem;
+    color: var(--light-color);
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+}
+.project-card .btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background-color: var(--blue);
+    color: var(--white);
+    font-size: 1.6rem;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    transition: background 0.3s ease;
+}
+.project-card .btn:hover {
+    background-color: #50388d;
+}
+      
+.project-selection {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--light-blue);
+    margin-top: 2rem;
+}
+
+.project-selection form {
+    display: inline-block;
+}
+
+.project-selection select {
+    padding: 0.8rem;
+    font-size: 1.6rem;
+    margin-right: 1rem;
+    border-radius: 0.5rem;
+    border: 2px solid var(--blue);
+}
+
+.project-selection button {
+    padding: 0.8rem 2rem;
+    background-color: var(--blue);
+    color: white;
+    font-size: 1.6rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.project-selection button:hover {
+    background-color: #50388d;
+}
+        
+
+#success-message {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+    color: green;
+}
+
+.footer {
+    background-color:#6a4c9c; 
+    color: #fff; /* თეთრი ტექსტი */
+    text-align: center;
+    padding: 15px 10px; /* ზომიერად მცირე padding */
+    font-size: 1.6rem; /* ზომა საშუალო */
+    font-weight: 600; /* ოდნავ სქელი ტექსტი */
+    letter-spacing: 1px; /* მცირე დაშორება ასოებს შორის */
+    margin-top: auto;
+    width: 100%;
+    border-top: 2px solid #1480be; /* ლურჯი ხაზის ეფექტი */
+    box-shadow: 0 -3px 6px rgba(255, 255, 255, 0.2); /* მსუბუქი განათება ზემოთ */
+}
+
+
+
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <a href="home.html" class="logo"> <i class="fa-solid fa-graduation-cap"></i>SkillVoyage</a>
+    <nav class="navbar">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="{{ url_for('tutorials') }}">Tutorials</a>
+        <a href="{{ url_for('contact_us') }}">Contact Us</a>
+    </nav>
+    <form action="search.html" method="get" class="search-form">
+        <input type="text" name="query" placeholder="Search here..." required>
+        <button type="submit" class="fas fa-search"></button>
+    </form>
+    <nav class="navbars">
+        <a href="login.html" id="logoutbtn">Sign Out</a>
+    </nav>
+</header>
+
+<!-- Project Section -->
+<section id="projects">
+    <div class="container">
+        <h2 class="section-title">პროექტები</h2>
+        <div class="grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <img src="/static/images/project1.jpg" alt="Project 1">
+                <h3 class="title-text">წიგნების თაროს სასკოლო სეზონი.</h3>
+                <p class="graph-text">წიგნების თაროს მე-15 სასკოლო სეზონში მონაწილეობის მიღება შეუძლიათ მე-10, მე-11 ან მე-12 კლასის მოსწავლეებისგან შემდგარ სამკაციან ჯგუფს. <span class="deadline">დედლაინი: 16 თებერვალი.</span></p>
+                <a href="https://www.facebook.com/share/p/19iUY5UPhH/?mibextid=wwXIfr" class="btn">იხილეთ დეტალები</a>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="project-card">
+                <img src="/static/images/project2.jpg" alt="Project 2">
+                <h3 class="title-text">გაცვლითი პროექტი შვედეთში</h3>
+                <p class="graph-text">პროექტის თემა: დემოკრატია, ადამიანის უფლებები და გამოხატვის თავისუფლება. მონაწილეობის მიღება შეუძლიათ 22-45 წლის ადამიანებს. <span class="deadline">დედლაინი: 18 თებერვალი.</span></p>
+                <a href="https://www.facebook.com/share/p/18JmByF6w3/?mibextid=wwXIfr" class="btn">იხილეთ დეტალები</a>
+            </div>
+            
+            <!-- Project 3 -->
+            <div class="project-card">
+                <img src="/static/images/project3.jpg" alt="Project 3">
+                <h3 class="title-text">გაცვლითი პროექტი ესპანეთში</h3>
+                <p class="graph-text">პროექტში "YOUTH ENTERPRISE PLAYGROUND" მონაწილეობის მიღება შეუძლიათ 18-25 წლის ადამიანებს. დაფინანსებულია ყველა ხარჯი. <span class="deadline">დედლაინი: 4 თებერვალი.</span></p>
+                <a href="https://www.facebook.com/share/p/19z4eV3V8A/?mibextid=wwXIfr" class="btn">იხილეთ დეტალები</a>
+            </div>
+            <!-- project 4-->
+            <div class="project-card">
+                <img src="/static/images/project4.jpg" alt="Project 4">
+                <h3 class="title-text">სასწავლო პროგრამა სილიკონ ველზე</h3>
+                <p class="graph-text">ერთ კვირიანი სასწავლო-შემეცნებითი პროგრამა. პროექტში მონაწილეობის საფასური შეადგენს $1990. არ არის ასაკობრივი შეზღუდვა. <span class="deadline">დედლაინი: 5 მაისი.</span></p>
+                <a href="https://www.facebook.com/photo/?fbid=921751330110489&set=a.493755476243412" class="btn">იხილეთ დეტალები</a>
+            </div>
+            
+            <!-- Project 5 -->
+            <div class="project-card">
+                <img src="/static/images/project5.jpg" alt="Project 5">
+                <h3 class="title-text">გაცვლით პროგრამა დანიასა და სომხეთში</h3>
+                <p class="graph-text">სასწავლო პროგრამა მიზნად ისახავს სოციო-პოლიტიკური და კულტურული თემებით დაინტერესებული ახალგაზრდების ერთმანეთთან დაკავშირებას. მონაწილეობის მიღება შეუძლია 18-30 წლის ადამიანებს. <span class="deadline">დედლაინი: 20 თებერვალი.</span></p>
+                <a href="https://www.facebook.com/photo.php?fbid=122184292226056008&set=a.122117110952056008&type=3&mibextid=wwXIfr&rdid=pZijr1crxeAhW0ZQ&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F19tMkq4dg3%2F%3Fmibextid%3DwwXIfr" class="btn">იხილეთ დეტალები</a>
+            </div>
+            
+            <!-- Project 6 -->
+            <div class="project-card">
+                <img src="/static/images/project6.jpg" alt="Project 6">
+                <h3 class="title-text">თბილისის ქალთა ლიდერობის აკადემია</h3>
+                <p class="graph-text">პროექტის თემა:დემოკრატია, თავისუფლება და საჯარო მმართველობა. მონაწილეობის მიღება შეუძლია 18 წელს ზემოთ ადამიანებს. <span class="deadline">დედლაინი: 10 თებერვალი.</span></p>
+                <a href="https://www.facebook.com/photo/?fbid=1039972498170010&set=a.487751003392165" class="btn">იხილეთ დეტალები</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Select Form -->
+  <!-- Select Form -->
+  <div class="project-selection">
+    <form id="project-form">
+        <select name="project" id="project-select">
+            <option value="project1">წიგნების თაროს სასკოლო სეზონი</option>
+            <option value="project2">გაცვლითი პროექტი შვედეთში</option>
+            <option value="project3">გაცვლითი პროექტი ესპანეთში</option>
+            <option value="project4">სასწავლო პროგრამა სილიკონ ველზე</option>
+            <option value="project5">გაცვლით პროგრამა დანიასა და სომხეთში</option>
+            <option value="project6">თბილისის ქალთა ლიდერობის აკადემია</option>
+        </select>
+        <button type="submit" class="btn">შეარჩიე პროექტი</button>
+    </form>
+</div>
+<div id="success-message" style="display: none; text-align: center; margin-top: 20px; color: green;">
+    <h3>პროექტი წარმატებით დაემატა!</h3>
+</div>
+
+<script>
+    document.getElementById('project-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const selectedProject = document.getElementById('project-select').value;
+        
+        // Redirecting to a new page with success message
+        window.location.href = 'success.html?project=' + encodeURIComponent(selectedProject);
+    });
+</script>
+
+<footer class="footer">
+    Bringing Dreams to Life | SkillVoyage
+</footer>
+</body>
+</html>

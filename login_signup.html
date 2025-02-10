@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIGN UP</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='static/login-signup.css') }}">
+ 
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Login Form -->
+    <div id="login-form" class="form-container">
+      <h1>შესვლა</h1>
+      <form action="" onsubmit="return handleLogin(event)">
+        <div class="input-box">
+          <input type="email" name="email" placeholder="ელ.ფოსტა" autocomplete="email" required>
+          <i class='bx bxs-envelope'></i>
+        </div>
+        <div class="input-box">
+          <input type="password" name="password" placeholder="პაროლი" autocomplete="password" required>
+          <i class='bx bxs-lock-alt'></i>
+        </div>
+        <button type="submit" name="submit" class="button">შესვლა</button>
+        <div class="login-link">
+          <p>არ გაქვთ ანგარიში? <a href="#" onclick="showRegisterForm(event)">დარეგისტრირდით</a></p>
+        </div>
+      </form>
+    </div>
+
+    <!-- Registration Form -->
+    <div id="register-form" class="form-container">
+      <h1>რეგისტრაცია</h1>
+      <form onsubmit="handleSubmit()">
+        <div class="input-box">
+          <input type="text" name="fullname" placeholder="სახელი და გვარი" autocomplete="fullname" required>
+          <i class='bx bx-user'></i>
+        </div>
+        <div class="input-box">
+          <input type="number" name="age" placeholder="ასაკი" autocomplete="age" required>
+          <i class='bx bx-calendar'></i>
+        </div>
+        <div class="input-box">
+          <input type="text" name="phone" placeholder="ტელეფონის ნომერი" autocomplete="phone" required id="phone-number">
+          <i class='bx bx-phone'></i>
+        </div>
+        <div class="input-box">
+          <input type="email" name="email" placeholder="ელ.ფოსტა" autocomplete="email" required>
+          <i class='bx bxs-envelope'></i>
+        </div>
+        <div class="input-box">
+          <input type="password" name="password" placeholder="პაროლი" autocomplete="password" required>
+          <i class='bx bxs-lock-alt'></i>
+        </div>
+        <div class="input-box">
+          <input type="password" name="confirm_password" placeholder="დაადასტურეთ პაროლი" autocomplete="confirm_password" required>
+          <i class='bx bxs-check-shield'></i>
+        </div>
+        <button type="submit" name="submit" class="button">გაიარეთ რეგისტრაცია</button>
+        <div class="login-link">
+          <p>უკვე დარეგისტრირებული ხართ? <a href="#" onclick="showLoginForm()">შესვლა</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function showRegisterForm() {
+      document.getElementById('login-form').style.display = 'none';
+      document.getElementById('register-form').style.display = 'block';
+    }
+
+    function showLoginForm() {
+      document.getElementById('register-form').style.display = 'none';
+      document.getElementById('login-form').style.display = 'block';
+    }
+
+    function handleSubmit() {
+      const formData = new FormData(document.querySelector('form'));
+      
+      const data = {
+        fullname: formData.get('fullname'),
+        age: formData.get('age'),
+        phone: formData.get('phone'),
+        email: formData.get('email'),
+        password: formData.get('password'),
+        confirm_password: formData.get('confirm_password')
+      };
+
+      fetch('http://localhost:5000/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          alert(data.message);
+          localStorage.setItem('signup-complete', 'true');  // რეგისტრაცია წარმატებით დასრულდა
+          window.location.href = "/logo_animation"
+        } else {
+          alert(data.message);
+        }
+      })
+      .catch(error => console.error('Error:', error));
+
+      return false;
+    }
+
+    function handleLogin() {
+      event.preventDefault();
+      const formData = new FormData(document.querySelector('#login-form form'));
+      
+      const data = {
+        email: formData.get('email'),
+        password: formData.get('password')
+      };
+
+      // Send data to your backend for login (for example)
+      fetch('http://localhost:5000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          alert('შესვლა წარმატებით განხორციელდა');
+          window.location.href = "/home.html";
+        } else {
+          alert('მომხმარებელი ან პაროლი არასწორია');
+        }
+      })
+      .catch(error => console.error('Error:', error));
+
+      return false;
+    }
+
+    document.querySelector('#phone-number').addEventListener('focus', function () {
+      if (this.value === '') {
+        this.value = '+995';
+      }
+      const formEl = document.querySelector('.form-container');
+      formEl.addEventListener('submit', event => {
+        event.preventDefault();
+
+        const formData = new FormData(formEl);
+        const data =  Object.fromEntries(formData);
+
+        fetch('https://reqres.in/api/tasks',{
+          method:'POST',
+          headers:{
+            'Content-Type': 'application/json'
+          },
+          body:JSON.stringify(data)
+        }).then(res => res.json())
+          .then(data => console.log(data))
+          .catch(error => console.log(error));
+      })
+    });
+  </script>
+</body>
+</html>
+
+

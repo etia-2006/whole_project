@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillVoyage Logo Animation</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+    body{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #3e046d;
+    }
+    h2{
+      position: relative;
+      margin: 0;
+      font-size: 4em;
+      font-weight: 900;
+      color: #9fabd3;
+      z-index: 1;
+      overflow: hidden;
+    }
+    h2::before{
+      content: '';
+      position: absolute;
+      left: 110%;
+      width: 120%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent 0%, #3e046d 5%, #3e046d 100%);
+      animation: animate 4s linear forwards;
+      animation-delay: 1s;
+    }
+    @keyframes animate {
+      0%{ left: 110%; }
+      100%{ left: -20%; }
+    }
+    h2 span{
+      color: #ff8902;
+    }
+    /* დამატებული animate-logo კლასი */
+    .animate-logo {
+      animation: animate 4s linear forwards;
+    }
+  </style>
+  <script>
+  window.onload = function () {
+    const isSignupComplete = localStorage.getItem('signup-complete');
+    console.log(isSignupComplete);  // შემოწმება, სწორად ინახება თუ არა 'true'
+
+    if (isSignupComplete === 'true') {
+      setTimeout(function () {
+        document.getElementById('skillvoyage-logo').classList.add('animate-logo');
+      }, 500);
+
+      setTimeout(function () {
+        window.location.href = "home.html";  
+      }, 5000);  
+    } else {
+      alert("თქვენ ჯერ არ დარეგისტრირებულხართ!");
+    }
+  };
+</script>
+</head>
+<body>
+  <div id="skillvoyage-logo">
+    <h2> <span>W</span>elcome <span>t</span>o <span>S</span>kill<span>V</span>oyage</h2>
+  </div>
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ჩვენს შესახებ</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600&display=swap');
+        
+* {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    transition: all .2s linear;
+}
+
+:root {
+    --blue: #6a4c9c;
+    --light-blue: #f0fdfa;
+    --light-color: #777;
+    --light-white: #eee;
+    --black: #444;
+    --white: #fff;
+    --border: 0.1rem solid var(--blue);
+    --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    box-shadow: var(--box-shadow);
+    padding: 1rem 10%;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+}
+
+.header .logo {
+    margin-right: auto;
+    font-size: 2.5rem;
+    text-transform: capitalize;
+    color: var(--black);
+    font-weight: bolder;
+}
+
+.header .logo i {
+    color: var(--blue);
+}
+
+.navbar a {
+    margin-right: 5rem;
+    font-size: 2rem;
+    text-transform: capitalize;
+    color: var(--black);
+    transition: color 0.2s linear;
+}
+
+.navbar a:hover {
+    color: var(--blue);
+}
+
+.icons div {
+    cursor: pointer;
+    font-size: 2.5rem;
+    color: var(--black);
+    margin-left: 3rem;
+}
+
+.icons div:hover {
+    color: var(--blue);
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.search-form input {
+    padding: 0.8rem 1.2rem;
+    border: 2px solid #ccc;
+    border-radius: 2rem;
+    outline: none;
+    font-size: 1.6rem;
+    width: 20rem;
+    transition: border-color 0.3s ease;
+}
+
+.search-form input:focus {
+    border-color: #6a4c9c;
+    box-shadow: 0 0 5px rgba(106, 76, 156, 0.5);
+}
+
+.search-form button {
+    background: #6a4c9c;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.search-form button:hover {
+    background: #50388d;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+.navbars {
+    display: flex;
+    justify-content: center;
+    background-color: #6a4c9c;
+    border-radius: 5px;
+    margin-left: 20px;
+    gap: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.navbars a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.4rem;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.navbars a:hover {
+    background-color: #50388d;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+
+.navbars {
+    display: flex;
+    justify-content: center;
+    background-color: #6a4c9c;
+    border-radius: 5px;
+    margin-left: 20px;
+    gap: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.navbars a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.4rem;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.navbars a:hover {
+        background-color: #50388d;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 2rem;
+}
+
+.title-text {
+    font-size: 2rem;
+    text-transform: capitalize;
+    color: var(--black);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.graph-text {
+    font-size: 1.6rem;
+    line-height: 2;
+    color: var(--light-color);
+}
+
+.media-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.title-text {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.media-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    max-width: 1000px;
+    gap: 20px;
+}
+
+.photo-item img {
+    width: 200%;
+    max-width: 500px;
+    height: 500px;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.description {
+    flex: 1;
+    max-width: 500px;
+}
+
+.description p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+}
+
+.media-section iframe {
+    width: 80%;
+    height: 300px;
+    margin-bottom: 2rem;
+}
+
+.photo-section {
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.team-title {
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: var(--black);
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.team-title::before, .team-title::after {
+    content: "\2726"; /* ლამაზი სიმბოლო */
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin: 0 1rem;
+}
+
+.team-title::after {
+    display: block;
+    content: "";
+    width: 80px;
+    height: 3px;
+    background: var(--accent-color);
+    margin: 0.5rem auto 0;
+}
+
+.photo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    text-align: center;
+}
+
+.photo-item img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.photo-item img:hover {
+    transform: scale(1.05);
+}
+
+.photo-item .description {
+    margin-top: 1rem;
+    font-size: 1.4rem;
+    color: var(--black);
+    line-height: 1.6;
+}
+
+
+.footer {
+    background-color:#6a4c9c; 
+    color: #fff; /* თეთრი ტექსტი */
+    text-align: center;
+    padding: 15px 10px; /* ზომიერად მცირე padding */
+    font-size: 1.6rem; /* ზომა საშუალო */
+    font-weight: 600; /* ოდნავ სქელი ტექსტი */
+    letter-spacing: 1px; /* მცირე დაშორება ასოებს შორის */
+    margin-top: auto;
+    width: 100%;
+    border-top: 2px solid #1480be; /* ლურჯი ხაზის ეფექტი */
+    box-shadow: 0 -3px 6px rgba(255, 255, 255, 0.2); /* მსუბუქი განათება ზემოთ */
+}
+
+
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <a href="home.html" class="logo"> <i class="fa-solid fa-graduation-cap"></i>SkillVoyage</a>
+    <nav class="navbar">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="{{ url_for('tutorials') }}">Tutorials</a>
+        <a href="{{ url_for('contact_us') }}">Contact Us</a>
+    </nav>
+
+    <form action="search.html" method="get" class="search-form">
+        <input type="text" name="query" placeholder="Search here..." required>
+        <button type="submit" class="fas fa-search"></button>
+    </form>
+
+    <nav class="navbars">
+        <a href="login.html" id="logoutbtn">Sign Out</a>
+    </nav>
+</header>
+
+<section class="media-section">
+    <div class="title-text">გაიგე უფრო მეტი ჩვენს შესახებ</div>
+    <div class="media-content">
+      <div class="photo-item">
+        <img src="/static/images/photo.JPG" alt="ჩვენი ფოტო">
+      </div>
+      <div class="description">
+        <p>InnoGirls ჯგუფმა საიტის შექმნის მიზანი ოქტომბრის თვეში დავისახეთ. მაშინ, როცა არცერთ ჩვენგანს გვქონდა კოდის წერის გამოცდილება და დიდი ცოდნა, გადავწყვიტეთ, ყველაფერი ნულიდან დაგვეწყო, იდეისთვის ფრთები შეგვესხა და მიზანი რეალობად გვექცა. მაშ ასე, წარმოგიდგენთ SkillVoyage-ს, რომლის შექმნის მთავარი მიზანია გავხადოთ არაფორმალური განათლება ყველასთვის ხელმისაწვდომი. ჩვენი მიზანი - "გააჩინე ცოდნა" - ციცაბო მთის მწვერვალზეა განლაგებული, სადაც მთა იცნობს ყოველი ადამიანის შესაძლებლობებს. გამოგვყევით და გახდით ჩვენი გუნდის ნაწილი.</p>
+      </div>
+    </div>
+</section>
+
+<section class="team-section">
+    <h2 class="team-title">Our Team</h2>
+    <section class="photo-section">
+        <div class="photo-item">
+            <img src="/static/images/photo1.jpg" alt="Photo 1">
+            <div class="description">
+                <strong>თამარ გამგებელი, 18 წლის</strong>
+                <p>ვფიქრობ, არაფორმალური განათლება ყველასთვის მნიშვნელოვანია. მსგავსი სახის აქტივობებში ჩართვა ადამიანს უამრავ ახალ მეგობარს და საინტერესო ადამიანს სძენს. ჩვენი საიტის მთავარი მისია კი ეს არის, რაც შეიძლება მეტმა ადამიანმა გაიგოს მსგავსი სახის აქტივობების შესახებ.</p>
+            </div>
+        </div>
+        <div class="photo-item">
+            <img src="/static/images/photo2.jpg" alt="Photo 2">
+            <div class="description">
+                <strong>ეთია ახალმოსულიშვილი, 18 წლის</strong>
+                <p>ადამიანები არაფორმალურ აქტივობებში ჩართვისგან თავს იკავებენ რამდენიმე მიზეზის გამო: პირველ რიგში, არ იციან როგორ შექმნან ეფექტური სამოტივაციო წერილი, ასევე არ იციან სად ეძებონ მსგავსი სახის აქტივობები. ჩვენი საიტი კი ამ პრობლემას მოუგვარებს ადამიანებს.</p>
+            </div>
+        </div>
+        <div class="photo-item">
+            <img src="/static/images/photo3.jpg" alt="Photo 3">
+            <div class="description">
+                <strong>მირანდა მუქერია, 18 წლის</strong>
+                <p>მნიშვნელოვანია არაფორმალურ აქტივობებში მრავალი ადამიანის ჩართვა, რაც მათ განუვითარებს კრიტიკული აზროვნების უნარსა და კომუნიკაციის შესაძლებლობებს.</p>
+            </div>
+        </div>
+        <div class="photo-item">
+            <img src="/static/images/photo4.jpg" alt="Photo 4">
+            <div class="description">
+                <strong>ლიკა გოგალაძე, 18 წლის</strong>
+                <p>ხშირ შემთხვევაში ახალგაზრდები მსგავსი სახის აქტივობების მიმართ უნდობლობას განიცდიან. სწორედ ამიტომ, ვფიქრობ ჩვენი საიტის მეშვეობით ახალგაზრდები დეტალურად გაეცნობიან მსგავს აქტივობებს და შესაბამისად, ჩაერთვებიან და განვითარდებიან.</p>
+            </div>
+        </div>
+    </section>
+</section>
+
+
+<footer class="footer">
+    Bringing Dreams to Life | SkillVoyage
+</footer>
+
+</body>
+</html>

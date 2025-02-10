@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact us</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600&display=swap');
+    
+    * {
+      font-family: 'Nunito', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      outline: none;
+      border: none;
+      text-decoration: none;
+      transition: all .2s linear;
+  }
+
+  html {
+            font-size: 62.5%;
+            overflow-x: hidden;
+        }
+
+        html::-webkit-scrollbar {
+            width: 1rem;
+        }
+
+        html::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        html::-webkit-scrollbar-thumb {
+            background: var(--blue);
+        }
+
+    :root {
+      --blue: #6a4c9c; /* changed to violet */
+      --light-blue: #f0fdfa;
+      --light-color: #777;
+      --light-white: #eee;
+      --black: #444;
+      --white: #fff;
+      --border: 0.1rem solid var(--blue);
+      --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  }
+
+  .header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    box-shadow: var(--box-shadow);
+    padding: 1rem 10%;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+}
+
+.header .logo {
+    margin-right: auto;
+    font-size: 2.5rem;
+    text-transform: capitalize;
+    color: var(--black);
+    font-weight: bolder;
+}
+
+.header .logo i {
+    color: var(--blue);
+}
+
+.navbar a {
+    margin-right: 5rem;
+    font-size: 2rem;
+    text-transform: capitalize;
+    color: var(--black);
+    transition: color 0.2s linear;
+}
+
+.navbar a:hover {
+    color: var(--blue);
+}
+
+.icons div {
+    cursor: pointer;
+    font-size: 2.5rem;
+    color: var(--black);
+    margin-left: 3rem;
+}
+
+.icons div:hover {
+    color: var(--blue);
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.search-form input {
+    padding: 0.8rem 1.2rem;
+    border: 2px solid #ccc;
+    border-radius: 2rem;
+    outline: none;
+    font-size: 1.6rem;
+    width: 20rem;
+    transition: border-color 0.3s ease;
+}
+
+.search-form input:focus {
+    border-color: #6a4c9c;
+    box-shadow: 0 0 5px rgba(106, 76, 156, 0.5);
+}
+
+.search-form button {
+    background: #6a4c9c;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.search-form button:hover {
+    background: #50388d;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+.navbars {
+    display: flex;
+    justify-content: center;
+    background-color: #6a4c9c;
+    border-radius: 5px;
+    margin-left: 20px;
+    gap: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.navbars a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.4rem;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.navbars a:hover {
+    background-color: #50388d;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.5;
+}
+.contact-bg{
+    height: 25vh;
+    background: linear-gradient(#646464, #646464), url(image/contact-bg.jpg);
+    background-position: 50% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.contact-bg h3{
+    font-size: 1.6rem; /* Increased from 1.3rem to 1.6rem */
+    font-weight: 400;
+}
+.contact-bg h2{
+    font-size: 4rem; /* Increased from 3rem to 4rem */
+    text-transform: uppercase;
+    padding: 0.4rem 0;
+    letter-spacing: 4px;
+}
+.line div{
+    margin: 0 0.2rem;
+}
+.line div:nth-child(1),
+.line div:nth-child(3){
+    height: 3px;
+    width: 70px;
+    background: #6a4c9c;
+    border-radius: 5px;
+}
+.line{
+    display: flex;
+    align-items: center;
+}
+.line div:nth-child(2){
+    width: 10px;
+    height: 10px;
+    background: #6a4c9c;
+    border-radius: 50%;
+}
+.text{
+    font-weight: 300;
+    opacity: 0.9;
+}
+.contact-bg .text{
+    margin: 1.8rem 0;
+    font-size: 2rem; /* Increased font size for the specific text */
+}
+.contact-body{
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+.contact-info{
+    margin: 2rem 0;
+    text-align: center;
+    padding: 2rem 0;
+}
+.contact-info span{
+    display: block;
+    font-size: 2rem; /* Increased from 1.5rem to 2rem */
+}
+.contact-info div{
+    margin: 0.8rem 0;
+    padding: 1rem;
+}
+.contact-info span .fas{
+    font-size: 2rem;
+    padding-bottom: 0.9rem;
+    color: #6a4c9c;
+}
+.contact-info div span:nth-child(2){
+    font-weight: 500;
+    font-size: 1.4rem; /* Increased from 1.1rem to 1.4rem */
+}
+.contact-info .text{
+    padding-top: 0.4rem;
+    font-size: 1.8rem; /* Increased from 1.5rem to 1.8rem */
+}
+.contact-form{
+    padding: 2rem 0;
+    border-top: 1px solid #c7c7c7;
+}
+.contact-form form{
+    padding-bottom: 1rem;
+}
+.form-control{
+    width: 100%;
+    border: 1.5px solid #c7c7c7;
+    border-radius: 5px;
+    padding: 1rem; /* Increased padding for larger inputs */
+    margin: 0.6rem 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.4rem; /* Increased from 1rem to 1.4rem */
+    outline: 0;
+}
+.form-control:focus{
+    box-shadow: 0 0 6px -3px #646464;
+}
+.contact-form form div{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 0.6rem;
+}
+.send-btn{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.4rem; /* Increased from 1rem to 1.4rem */
+    text-transform: uppercase;
+    color: #fff;
+    background: #6a4c9c;
+    border: none;
+    border-radius: 5px;
+    padding: 0.8rem 1.8rem; /* Adjusted padding for larger button */
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+.send-btn:hover{
+    opacity: 0.8;
+}
+.contact-form > div img{
+    width: 85%;
+}
+.contact-form > div{
+    margin: 0 auto;
+    text-align: center;
+}
+.contact-footer{
+    padding: 2rem 0;
+    background:#6a4c9c;
+}
+.contact-footer h3{
+    font-size: 1.6rem; /* Increased from 1.3rem to 1.6rem */
+    color: #fff;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+.social-links{
+    display: flex;
+    justify-content: center;
+}
+.social-links a{
+    text-decoration: none;
+    width: 50px; /* Increased size of icons */
+    height: 50px;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.4rem;
+    font-size: 2rem; /* Increased from default size to 2rem */
+    transition: all 0.4s ease;
+}
+.social-links a:hover{
+    color: #646464;
+    border-color: #646464;
+}
+
+@media screen and (min-width: 768px){
+    .contact-bg .text{
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .contact-info{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 992px){
+    .contact-bg .text{
+        width: 50%;
+    }
+    .contact-form{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    .contact-info{
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+      
+    </style>
+      
+
+
+<body>
+
+    <header class="header">
+        <a href="home.html" class="logo"> <i class="fa-solid fa-graduation-cap"></i>SkillVoyage</a>
+        <nav class="navbar">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('tutorials') }}">Tutorials</a>
+            <a href="{{ url_for('contact_us') }}">Contact Us</a>
+        </nav>
+    
+        <form action="search.html" method="get" class="search-form">
+            <input type="text" name="query" placeholder="Search here..." required>
+            <button type="submit" class="fas fa-search"></button>
+        </form>
+    
+        <nav class="navbars">
+            <a href="login.html" id="logoutbtn">Sign Out</a>
+        </nav>
+    </header>
+
+    
+  <section class = "contact-section">
+    <div class = "contact-bg">
+      <h2>Chase your dreams with us!</h2>
+      <div class = "line">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <p class = "text">ნებისმიერი კითხვის შემთხვევაში დაგვიკავშირდით.</p> <!-- Font size increased here -->
+    </div>
+
+    <div class = "contact-body">
+      <div class = "contact-info">
+        <div>
+          <span><i class = "fas fa-mobile-alt"></i></span>
+          <span>ტელეფონის ნომერი. </span>
+          <span class = "text">592-94-57-69</span>
+        </div>
+        <div>
+          <span><i class = "fas fa-envelope-open"></i></span>
+          <span>ელ.ფოსტა</span>
+          <span class = "text">official.skillvoyage@gmail.com</span>
+        </div>
+        <div>
+          <span><i class = "fas fa-map-marker-alt"></i></span>
+          <span>მისამართი</span>
+          <span class = "text">გიორგი წერეთელის ქუჩა 1, თბილისი, საქართველო</span>
+        </div>
+        <div>
+          <span><i class = "fas fa-clock"></i></span>
+          <span>სამუშაო საათები</span>
+          <span class = "text">ორშაბათი-პარასკევი(09:00-17:00)</span>
+        </div>
+      </div>
+
+      <div class = "contact-form">
+        <form>
+          <div>
+            <input type = "text" class = "form-control" placeholder="სახელი">
+            <input type = "text" class = "form-control" placeholder="გვარი">
+          </div>
+          <div>
+            <input type = "email" class = "form-control" placeholder="ელ.ფოსტა">
+            <input type = "text" class = "form-control" placeholder="ტელ.ნომერი">
+          </div>
+          <textarea rows = "5" placeholder="შეტყობინების გაგზავნა" class = "form-control"></textarea>
+          <input type = "submit" class = "send-btn" value = "გაგზავნა">
+        </form>
+
+        <div>
+          <img src = "/static/images/contact-png.png" alt = "">
+        </div>
+      </div>
+    </div>
+
+    <div class = "map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248.1490386933!2d44.7473455!3d41.7120153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z41.7120153N44.7473455E!5e0!3m2!1sen!2sge!4vhttps://maps.app.goo.gl/QK4Z9dMAwRkg2eou9" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div>
+
+    <div class = "contact-footer">
+        <h3>Bringing Dreams to Life | SkillVoyage</h3>
+        <h3>Follow Us</h3>
+      <div class = "social-links">
+        <a href = "#" class = "fab fa-facebook-f"></a>
+        <a href = "#" class = "fab fa-twitter"></a>
+        <a href = "#" class = "fab fa-instagram"></a>
+        <a href = "#" class = "fab fa-linkedin"></a>
+        <a href = "#" class = "fab fa-youtube"></a>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

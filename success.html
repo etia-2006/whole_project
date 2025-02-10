@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600&display=swap');
+        * {
+            font-family: 'Nunito', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-decoration: none;
+            transition: all .2s linear;
+        }
+        :root {
+            --blue: #6a4c9c;
+            --light-blue: #f0fdfa;
+            --light-color: #777;
+            --light-white: #eee;
+            --black: #444;
+            --white: #fff;
+            --border: 0.1rem solid var(--blue);
+            --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        }
+        html {
+            font-size: 62.5%;
+            overflow-x: hidden;
+        }
+        html::-webkit-scrollbar {
+            width: 1rem;
+        }
+        html::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        html::-webkit-scrollbar-thumb {
+            background: var(--blue);
+        }
+
+        /* Header and Navbar */
+        .header {
+            position: sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            box-shadow: var(--box-shadow);
+            padding: 1rem 10%;
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+        }
+        .header .logo {
+            margin-right: auto;
+            font-size: 2.5rem;
+            text-transform: capitalize;
+            color: var(--black);
+            font-weight: bolder;
+        }
+        .header .logo i {
+            color: var(--blue);
+        }
+        .navbar a {
+            margin-right: 5rem;
+            font-size: 2rem;
+            text-transform: capitalize;
+            color: var(--black);
+            transition: color 0.2s linear;
+        }
+        .navbar a:hover {
+            color: var(--blue);
+        }
+
+        .search-form {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .search-form input {
+            padding: 0.8rem 1.2rem;
+            border: 2px solid #ccc;
+            border-radius: 2rem;
+            outline: none;
+            font-size: 1.6rem;
+            width: 20rem;
+            transition: border-color 0.3s ease;
+        }
+        .search-form input:focus {
+            border-color: #6a4c9c;
+            box-shadow: 0 0 5px rgba(106, 76, 156, 0.5);
+        }
+        .search-form button {
+            background: #6a4c9c;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            font-size: 1.6rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        .search-form button:hover {
+            background: #50388d;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Sign Out Button (updated like in tutorials.html) */
+        .btn-sign-out {
+            background-color: var(--blue); /* Original color */
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            font-size: 1.6rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .btn-sign-out:hover {
+            background-color: #50388d; /* Darker blue for hover effect */
+            transform: scale(1.05);
+        }
+
+        .footer {
+            background-color: var(--blue);
+            color: #fff;
+            text-align: center;
+            padding: 15px 10px;
+            font-size: 1.6rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-top: auto;
+            width: 100%;
+            border-top: 2px solid #1480be;
+            box-shadow: 0 -3px 6px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Success Message Styling */
+        #success-message {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            height: 80vh;
+            text-align: center;
+            color: green;
+            opacity: 0;
+            animation: fadeIn 1s forwards 0.5s;
+        }
+
+        /* Keyframe for fadeIn animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #success-message h2 {
+            font-size: 3rem;
+            color: var(--blue);
+            margin-bottom: 2rem;
+            animation: slideIn 1s ease-out;
+        }
+
+        /* Slide-in animation for heading */
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        #success-message p {
+            font-size: 1.8rem;
+            color: var(--black);
+            margin-bottom: 2rem;
+        }
+
+        .btn-success {
+            background-color: #6a0dad;
+            color: white;
+            padding: 0.8rem 2rem;
+            font-size: 1.8rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        .btn-success:hover {
+            background-color: #5a0c9e;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <a href="home.html" class="logo"> <i class="fa-solid fa-graduation-cap"></i> SkillVoyage</a>
+    <nav class="navbar">
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="tutorials.html">Tutorials</a>
+        <a href="contact-us.html">Contact Us</a>
+    </nav>
+
+    <!-- Search bar in header -->
+    <div class="search-form">
+        <input type="text" placeholder="Search Projects...">
+        <button>Search here</button>
+    </div>
+
+    <!-- Sign Out Button -->
+    <a href="sign-out.html" class="btn-sign-out">Sign Out</a>
+</header>
+
+<!-- Success Message Section -->
+<div id="success-message">
+    <h2>პროექტი წარმატებით დაემატა!</h2>
+    <p>თქვენ წარმატებით აარჩიეთ პროექტი. შეგიძლიათ დაბრუნდეთ მთავარ გვერდზე  სხვა პროექტის ასარჩევად.</p>
+    <a href="home.html" class="btn-success">მთავარ გვერდზე დაბრუნება</a>
+</div>
+
+<footer class="footer">
+    Bringing Dreams to Life | SkillVoyage
+</footer>
+
+</body>
+</html>

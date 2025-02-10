@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>სამოტივაციო</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600&display=swap');
+
+        * {
+            font-family: 'Nunito', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-decoration: none;
+            transition: all .2s linear;
+        }
+
+        :root {
+            --blue: #6a4c9c; /* შეცვლილი იასამნისფერი */
+            --light-blue: #f0fdfa;
+            --light-color: #777;
+            --light-white: #eee;
+            --black: #444;
+            --white: #fff;
+            --border: 0.1rem solid var(--blue);
+            --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        }
+
+        html {
+            font-size: 62.5%;
+            overflow-x: hidden;
+        }
+
+        html::-webkit-scrollbar {
+            width: 1rem;
+        }
+
+        html::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        html::-webkit-scrollbar-thumb {
+            background: var(--blue);
+        }
+
+        .header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    box-shadow: var(--box-shadow);
+    padding: 1rem 10%;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+}
+
+.header .logo {
+    margin-right: auto;
+    font-size: 2.5rem;
+    text-transform: capitalize;
+    color: var(--black);
+    font-weight: bolder;
+}
+
+.header .logo i {
+    color: var(--blue);
+}
+
+.navbar a {
+    margin-right: 5rem;
+    font-size: 2rem;
+    text-transform: capitalize;
+    color: var(--black);
+    transition: color 0.2s linear;
+}
+
+.navbar a:hover {
+    color: var(--blue);
+}
+
+.icons div {
+    cursor: pointer;
+    font-size: 2.5rem;
+    color: var(--black);
+    margin-left: 3rem;
+}
+
+.icons div:hover {
+    color: var(--blue);
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.search-form input {
+    padding: 0.8rem 1.2rem;
+    border: 2px solid #ccc;
+    border-radius: 2rem;
+    outline: none;
+    font-size: 1.6rem;
+    width: 20rem;
+    transition: border-color 0.3s ease;
+}
+
+.search-form input:focus {
+    border-color: #6a4c9c;
+    box-shadow: 0 0 5px rgba(106, 76, 156, 0.5);
+}
+
+.search-form button {
+    background: #6a4c9c;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.search-form button:hover {
+    background: #50388d;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+.navbars {
+    display: flex;
+    justify-content: center;
+    background-color: #6a4c9c;
+    border-radius: 5px;
+    margin-left: 20px;
+    gap: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.navbars a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.4rem;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.navbars a:hover {
+    background-color: #50388d;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}       
+
+h1 {
+    font-size: 3.5rem;
+    color: var(--white);
+    background-color: var(--blue);
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.3rem;
+    background-color: black;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.video-section {
+    margin-top: 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    padding: 2rem 5%;
+}
+iframe {
+    width: 100%;
+    max-width: 560px;
+    height: 315px;
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+iframe:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+    
+.footer {
+    background-color:#6a4c9c; 
+    color: #fff; /* თეთრი ტექსტი */
+    text-align: center;
+    padding: 15px 10px; /* ზომიერად მცირე padding */
+    font-size: 1.6rem; /* ზომა საშუალო */
+    font-weight: 600; /* ოდნავ სქელი ტექსტი */
+    letter-spacing: 1px; /* მცირე დაშორება ასოებს შორის */
+    margin-top: auto;
+    width: 100%;
+    border-top: 2px solid #1480be; /* ლურჯი ხაზის ეფექტი */
+    box-shadow: 0 -3px 6px rgba(255, 255, 255, 0.2); /* მსუბუქი განათება ზემოთ */
+}
+
+
+        
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <a href="#" class="logo"> <i class="fa-solid fa-graduation-cap"></i>SkillVoyage</a>
+    
+    <nav class="navbar">
+        <a href="{{ url_for('home') }}">home</a>
+        <a href="{{ url_for('about') }}">about</a>
+        <a href="{{ url_for('tutorials') }}">tutorials</a>
+        <a href="{{ url_for('contact_us') }}">contact us</a>
+    </nav>
+
+    <form action="search.html" method="get" class="search-form">
+        <input type="text" name="query" placeholder="Search here..." required>
+        <button type="submit" class="fas fa-search"></button>
+    </form>
+
+    <nav class="navbars">
+        <a href="#" id="logoutbtn">Sign Out</a>
+    </nav>
+</header>
+
+<section>
+    <h1>როგორ შევქმნათ ეფექტური სამოტივაციო წერილი?</h1>
+</section>
+
+<div class="video-section">
+    <iframe src="https://www.youtube.com/embed/uy639bvuPmk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/fEn0WLT6-0M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<footer class="footer">
+    Bringing Dreams to Life | SkillVoyage
+</footer>
+</body>
+</html>
