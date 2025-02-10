@@ -11,9 +11,6 @@ from flask_cors import CORS
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY")  # Secret key for session management
 
-# file name for storing users
-filename = 'users.json'
-
 # APScheduler-ის ინიციალიზაცია
 scheduler = BackgroundScheduler()
 
@@ -37,7 +34,7 @@ twilio_phone_number = os.getenv('TWILIO_PHONE_NUMBER')
 client = Client(account_sid, auth_token)
 
 # JSON ფაილის სახელია tasks.json
-filename = 'tasks.json'
+filename = 'users.json'
 
 # დრო
 datetoday = date.today().strftime("%m_%d_%y")
@@ -49,7 +46,6 @@ if not os.path.exists(filename):
 
 
 def get_users():
-    """ფართობს JSON ფაილიდან ყველა ტასკი"""
     if os.path.exists(filename):
         with open(filename, 'r', encoding='utf-8') as f:
             return json.load(f)
@@ -64,7 +60,7 @@ def save_users(tasklist):
 
 
 def updatetasklist(tasklist):
-    with open('tasks.json', 'w', encoding='utf-8') as f:
+    with open('users.json', 'w', encoding='utf-8') as f:
         json.dump(tasklist, f, indent=4)
 
 ################## როუტების ფუნქცია #########################
@@ -150,14 +146,14 @@ def clear_list():
     save_users([])  # სიის გასუფთავება
     return render_template('home.html', datetoday=date.today().strftime("%m_%d_%y"), tasklist=[], l=0)
 
-@app.route('/sign up', methods=['POST'])
+@app.route('/register', methods=['POST'])
 def handle_sign_up():
-    fullname = request.form['fullname']
-    age = request.form['age']
-    phone = request.form['phone']
-    email = request.form['email']
-    password = request.form['password']
-    confirm_password = request.form['confirm_password']
+    fullname = request.form.get('fullname', 'Default Full Name')
+    age = request.form.get('age')
+    phone = request.form.get('phone')
+    email = request.form.get('email')
+    password = request.form.get('password')
+    confirm_password = request.form.get('confirm_password')
     # დაჟინებული შემოწმება, რომ პაროლები ემთხვევა
     if password != confirm_password:
         return jsonify({"success": False, "message": "პაროლები არ ემთხვევა"})
@@ -207,21 +203,14 @@ def contact_us():
 # Route to handle Login form submission
 @app.route('/login', methods=['POST'])
 def handle_login():
-    email = request.form['email']
-    password = request.form['password']
+    email = request.form.get('email')  # .get() ფუფუნებას გთავაზობს
+    password = request.form.get('password')
 
-    users = get_users()
-    check_password_hash = (password)
+    if not email or not password:
+        return "Missing email or password", 400
 
-    if user and check_password_hash(user['password'], password):
-        # Find user by email
-        user = next((u for u in users if u['email'] == email), None)
-        if user and check_password_hash(user['password'], password):
-            # Store user in session to keep them logged in
-            session['user'] = user['email']
-            return redirect(url_for('home'))  
-        else:
-            return jsonify({"success": False, "message": "Invalid credentials"})
+    # შენიშვნა: ამ ლოგიკას შეუძლია ვალიდაცია და სხვა რეაქციები
+    return f"Email: {email}, Password: {password}"
         
 @app.route('/save-user', methods=['POST'])
 def save_user():
@@ -252,7 +241,3 @@ if __name__ == '__main__':
     except (KeyboardInterrupt, SystemExit):
         # APScheduler შეწყვეტა Flask-ის გაჩერებისას
         scheduler.shutdown()  # APScheduler-ის შეწყვეტა
-
-
-
-

@@ -13,7 +13,7 @@
     <!-- Login Form -->
     <div id="login-form" class="form-container">
       <h1>შესვლა</h1>
-      <form action="" onsubmit="return handleLogin(event)">
+      <form method="post" action="/login" onsubmit="return handleLogin(event)">
         <div class="input-box">
           <input type="email" name="email" placeholder="ელ.ფოსტა" autocomplete="email" required>
           <i class='bx bxs-envelope'></i>
@@ -32,7 +32,7 @@
     <!-- Registration Form -->
     <div id="register-form" class="form-container">
       <h1>რეგისტრაცია</h1>
-      <form onsubmit="handleSubmit()">
+      <form method="post" action="/register" onsubmit="handleSubmit()">
         <div class="input-box">
           <input type="text" name="fullname" placeholder="სახელი და გვარი" autocomplete="fullname" required>
           <i class='bx bx-user'></i>
@@ -88,7 +88,7 @@
         confirm_password: formData.get('confirm_password')
       };
 
-      fetch('http://localhost:5000/signup', {
+      fetch('http://localhost:5000/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -152,7 +152,7 @@
         const formData = new FormData(formEl);
         const data =  Object.fromEntries(formData);
 
-        fetch('https://reqres.in/api/tasks',{
+        fetch('https://reqres.in/api/users',{
           method:'POST',
           headers:{
             'Content-Type': 'application/json'
